@@ -20,7 +20,8 @@ public class CustomerService {
        accountRepository.save(account);
     }
 
-    public List<Account> getCustomerAccounts() {
-        return accountRepository.getAll();
+    public Iterable<Account> getCustomerAccounts() {
+
+        return accountRepository.findAll();
     }
 }
