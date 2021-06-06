@@ -1,6 +1,8 @@
 package com.sda.larisaigna.webshop;
 
 import com.sda.larisaigna.webshop.model.Account;
+import com.sda.larisaigna.webshop.model.Customer;
+import com.sda.larisaigna.webshop.repository.AccountRepository;
 import com.sda.larisaigna.webshop.service.CustomerService;
 import com.sda.larisaigna.webshop.service.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,8 @@ public class WebshopApplication implements CommandLineRunner {
 	private CustomerService customerService;
 	@Autowired
 	private MailService mailService;
+	@Autowired
+	private AccountRepository accountRepository;
 
 	public static void main(String[] args) {
 
@@ -37,10 +41,19 @@ public class WebshopApplication implements CommandLineRunner {
 
 		Account account1 = new Account();
 		account1.setId(1L);
-		customerService.addCustomer(account1);
+
+		Customer customer1 = new Customer();
+		customer1.setId(1L);
+		customerService.addCustomer(account1, customer1);
 
 		customerService.getCustomerAccounts().forEach(account -> System.out.println(account));
 
-		mailService.sendMail("larissa_im@yahoo.com", "client@example.com", "Mock mail subject", "Mock mail subject");
+		mailService.sendMail("larissa_im@yahoo.com",
+				"client@example.com",
+				"Mock mail subject",
+				"Mock mail subject");
+
+		accountRepository.findAllByIsClosed(false).forEach(System.out::println);
+
 	}
 }
