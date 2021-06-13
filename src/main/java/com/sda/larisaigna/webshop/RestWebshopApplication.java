@@ -21,9 +21,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import java.util.Arrays;
 
 @SpringBootApplication
-@EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "com.sda.larisaigna.webshop.repository")
-@EntityScan(basePackages = "com.sda.larisaigna.webshop.model")
+//@EnableTransactionManagement
+//@EnableJpaRepositories(basePackages = "com.sda.larisaigna.webshop.repository")
+//@EntityScan(basePackages = "com.sda.larisaigna.webshop.model")
 public class RestWebshopApplication {
 
 
